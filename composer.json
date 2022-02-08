@@ -1,0 +1,27 @@
+{
+    "name": "xidanko/auto-installer",
+    "description": "Auto install laravel application hosted locally by laragon",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "XiDanko\\AutoInstaller\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jalal Al-Mussawi",
+            "email": "xidanko07@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "XiDanko\\AutoInstaller\\AutoInstallerServiceProvider"
+            ]
+        }
+    }
+}
