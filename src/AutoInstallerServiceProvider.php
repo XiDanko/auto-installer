@@ -22,6 +22,7 @@ class AutoInstallerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([__DIR__ . '/../config/config.php' => config_path('auto-installer.php')], 'auto-installer-config');
+        $this->publishes([__DIR__ . '/../bin' => base_path('tools')], 'auto-installer-tools');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
