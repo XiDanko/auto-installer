@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'service_startup_delay' => 30000,
     'commands' => [
         ['name' => 'optimize:clear',                'args' => []],
         ['name' => 'app:move-to-production',        'args' => []],

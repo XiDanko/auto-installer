@@ -23,10 +23,10 @@ class CreateWebsocketsService extends Command
         $appName = env('app_name');
         try {
             $this->info('Creating websockets service...');
-            $serviceFileContent = $this->generateServiceCode();
+            $service = $this->generateServiceCode();
             $target = $_SERVER['USERPROFILE'] . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/$appName-websockets-service.vbs";
             $handler = fopen($target, 'w');
-            fwrite($handler, $serviceFileContent);
+            fwrite($handler, $service);
             fclose($handler);
             $this->info('Websockets service created successfully.');
         } catch (Exception $exception) {
@@ -37,10 +37,8 @@ class CreateWebsocketsService extends Command
     private function generateServiceCode()
     {
         $route = route('websockets.start');
-        return
-            "
-Set objShell = WScript.CreateObject(\"WScript.Shell\")
-objShell.Run(\"curl ${route}\"), 0, True
-            ";
+        $serviceStub = file_get_contents(__DIR__ . '\..\..\WebsocketsService.stub');
+        $serviceStub = str_replace('$delay', config('auto-installer.service_startup_delay'), $serviceStub);
+        return str_replace('$url', $route, $serviceStub);
     }
 }
