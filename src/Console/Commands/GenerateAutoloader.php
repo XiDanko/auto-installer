@@ -19,7 +19,7 @@ class GenerateAutoloader extends Command
     {
         try {
             $this->info('Generating autoloader...');
-            exec('composer dump-autoload --optimize --no-dev --no-interaction --working-dir ' . base_path());
+            exec('composer install --optimize-autoloader --no-dev --no-interaction --working-dir ' . base_path());
             $this->info('Autoloader generated successfully.');
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());
