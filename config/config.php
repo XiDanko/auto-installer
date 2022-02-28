@@ -11,7 +11,7 @@ return [
         ['name' => 'storage:link',                  'args' => []],
         ['name' => 'app:set-as-default-site',       'args' => []],
         ['name' => 'optimize',                      'args' => []],
-        ['name' => 'app:create-websockets-service',  'args' => []],
+        ['name' => 'app:create-websockets-service', 'args' => []],
         ['name' => 'app:restart-host',              'args' => []],
     ]
 ];
