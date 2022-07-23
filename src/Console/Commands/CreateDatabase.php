@@ -31,6 +31,7 @@ class CreateDatabase extends Command
             $this->info('Creating database...');
             if (env('DB_CONNECTION') === 'mysql') $this->createMysqlDatabase();
             else if (env('DB_CONNECTION') === 'sqlsrv') $this->createSqlServerDatabase();
+            else if (env('DB_CONNECTION') === 'pgsql') $this->createPostgresDatabase();
             $this->info('Database created successfully.');
         } catch (\Exception $exception) {
             $this->error($exception->getMessage());
@@ -46,5 +47,11 @@ class CreateDatabase extends Command
     private function createSqlServerDatabase()
     {
         exec("sqlcmd -S tcp:$this->host,$this->port -U \"$this->username\" -P \"$this->password\" -Q \"CREATE DATABASE $this->database\"");
+    }
+
+    private function createPostgresDatabase()
+    {
+        $connection = pg_connect("host=$this->host port=$this->port user=$this->username password=$this->password");
+        pg_exec($connection, "CREATE DATABASE $this->database");
     }
 }
