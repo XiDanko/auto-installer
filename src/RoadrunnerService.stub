@@ -1,0 +1,5 @@
+WScript.Sleep $delay
+Set objShell = WScript.CreateObject("WScript.Shell")
+Dim rrPath : rrPath = "$rrPath"
+Dim rrConfigPath : rrConfigPath = "$rrConfigPath"
+objShell.Run(rrPath + " -c " + rrConfigPath + " serve"), 0, True

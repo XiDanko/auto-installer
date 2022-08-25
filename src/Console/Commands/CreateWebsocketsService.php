@@ -38,7 +38,7 @@ class CreateWebsocketsService extends Command
     {
         $route = route('websockets.start');
         $serviceStub = file_get_contents(__DIR__ . '\..\..\WebsocketsService.stub');
-        $serviceStub = str_replace('$delay', config('auto-installer.service_startup_delay'), $serviceStub);
+        $serviceStub = str_replace('$delay', config('auto-installer.websockets.service_startup_delay'), $serviceStub);
         return str_replace('$url', $route, $serviceStub);
     }
 }
