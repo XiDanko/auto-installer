@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use XiDanko\AutoInstaller\Console\Commands\CreateDatabase;
 use XiDanko\AutoInstaller\Console\Commands\CreateRoadrunnerService;
 use XiDanko\AutoInstaller\Console\Commands\CreateWebsocketsService;
-use XiDanko\AutoInstaller\Console\Commands\OptimizingAutoloader;
 use XiDanko\AutoInstaller\Console\Commands\InstallApplication;
 use XiDanko\AutoInstaller\Console\Commands\RestartHost;
 use XiDanko\AutoInstaller\Console\Commands\SetAsDefaultSite;
@@ -30,7 +29,6 @@ class AutoInstallerServiceProvider extends ServiceProvider
                 CreateDatabase::class,
                 CreateRoadrunnerService::class,
                 CreateWebsocketsService::class,
-                OptimizingAutoloader::class,
                 InstallApplication::class,
                 RestartHost::class,
                 SetAsDefaultSite::class,
