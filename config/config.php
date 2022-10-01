@@ -12,9 +12,8 @@ return [
     ],
 
     'commands' => [
-        ['name' => 'app:generate-autoloader',       'args' => []],
+        ['name' => 'app:optimize-autoloader',       'args' => []],
         ['name' => 'optimize:clear',                'args' => []],
-        ['name' => 'app:move-to-production',        'args' => []],
         ['name' => 'app:create-database',           'args' => []],
         ['name' => 'migrate:fresh',                 'args' => ['--seed' => true]],
         ['name' => 'storage:link',                  'args' => []],
