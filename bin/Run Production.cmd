@@ -1,7 +1,7 @@
 @ECHO OFF
 cd..
 echo Optimizing composer autoloader
-composer update --no-dev --optimize-autoloader
+call composer update --no-dev --optimize-autoloader --no-interaction
 
 echo Coping production env...
 copy .env.prod .env
