@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
 
-class CreateRoadrunnerService extends Command
+class CreateScheduleService extends Command
 {
-    protected $signature = 'app:create-roadrunner-service';
+    protected $signature = 'app:create-schedule-service';
 
-    protected $description = 'Create roadrunner service';
+    protected $description = 'Create schedule service';
 
     public function __construct()
     {
@@ -22,13 +22,13 @@ class CreateRoadrunnerService extends Command
     {
         $appName = config('app.name');
         try {
-            $this->info('Creating roadrunner service...');
+            $this->info('Creating schedule service...');
             $service = $this->generateServiceCode();
-            $target = $_SERVER['USERPROFILE'] . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/$appName-roadrunner-service.vbs";
+            $target = $_SERVER['USERPROFILE'] . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/$appName-schedule-service.vbs";
             $handler = fopen($target, 'w');
             fwrite($handler, $service);
             fclose($handler);
-            $this->info('Roadrunner service created successfully.');
+            $this->info('Schedule service created successfully.');
         } catch (Exception $exception) {
             $this->error($exception->getMessage());
         }
@@ -36,10 +36,10 @@ class CreateRoadrunnerService extends Command
 
     private function generateServiceCode()
     {
-        $serviceStub = file_get_contents(__DIR__ . '\..\..\Stubs\RoadrunnerService.stub');
+        $serviceStub = file_get_contents(__DIR__ . '\..\..\Stubs\ScheduleService.stub');
         $serviceStub = str_replace('$delay', config('auto-installer.services_startup_delay'), $serviceStub);
-        $serviceStub = str_replace('$rrPath', config('auto-installer.roadrunner.executable_path'), $serviceStub);
-        $serviceStub = str_replace('$rrConfigPath', config('auto-installer.roadrunner.config_path'), $serviceStub);
+        $serviceStub = str_replace('$phpPath', PHP_BINARY, $serviceStub);
+        $serviceStub = str_replace('$artisanPath', base_path('artisan'), $serviceStub);
         return $serviceStub;
     }
 }

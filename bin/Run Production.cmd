@@ -10,6 +10,8 @@ echo Coping production rr.yaml
 copy .rr.prod.yaml .rr.yaml
 
 echo Deleting unwanted files...
+rm ".env.prod"
+rm ".rr.prod.yaml"
 powershell -Command "Remove-Item 'storage/framework/sessions/*' -Recurse -Force"
 powershell -Command "Remove-Item 'storage/framework/cache/data/*' -Recurse -Force"
 

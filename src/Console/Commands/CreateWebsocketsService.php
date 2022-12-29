@@ -20,7 +20,7 @@ class CreateWebsocketsService extends Command
 
     public function handle()
     {
-        $appName = env('app_name');
+        $appName = config('app.name');
         try {
             $this->info('Creating websockets service...');
             $service = $this->generateServiceCode();
@@ -36,9 +36,10 @@ class CreateWebsocketsService extends Command
 
     private function generateServiceCode()
     {
-        $route = route('websockets.start');
-        $serviceStub = file_get_contents(__DIR__ . '\..\..\WebsocketsService.stub');
-        $serviceStub = str_replace('$delay', config('auto-installer.websockets.service_startup_delay'), $serviceStub);
-        return str_replace('$url', $route, $serviceStub);
+        $serviceStub = file_get_contents(__DIR__ . '\..\..\Stubs\WebsocketsService.stub');
+        $serviceStub = str_replace('$delay', config('auto-installer.services_startup_delay'), $serviceStub);
+        $serviceStub = str_replace('$phpPath', PHP_BINARY, $serviceStub);
+        $serviceStub = str_replace('$artisanPath', base_path('artisan'), $serviceStub);
+        return $serviceStub;
     }
 }

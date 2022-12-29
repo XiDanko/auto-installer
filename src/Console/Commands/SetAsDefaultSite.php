@@ -19,7 +19,7 @@ class SetAsDefaultSite extends Command
     public function handle()
     {
         try {
-            $appName = env('APP_NAME');
+            $appName = config('app.name');
             $this->info("Setting $appName as the default site...");
             $defaultSiteConfFile = realpath(base_path() . '../../../etc/apache2/sites-enabled/00-default.conf');
             file_put_contents($defaultSiteConfFile, $this->generateSiteConfig());
