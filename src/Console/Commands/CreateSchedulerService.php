@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
 
-class CreateScheduleService extends Command
+class CreateSchedulerService extends Command
 {
-    protected $signature = 'app:create-schedule-service';
+    protected $signature = 'app:create-scheduler-service';
 
-    protected $description = 'Create schedule service';
+    protected $description = 'Create scheduler service';
 
     public function __construct()
     {
@@ -22,13 +22,13 @@ class CreateScheduleService extends Command
     {
         $appName = config('app.name');
         try {
-            $this->info('Creating schedule service...');
+            $this->info('Creating scheduler service...');
             $service = $this->generateServiceCode();
-            $target = $_SERVER['USERPROFILE'] . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/$appName-schedule-service.vbs";
+            $target = $_SERVER['USERPROFILE'] . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/$appName-scheduler-service.vbs";
             $handler = fopen($target, 'w');
             fwrite($handler, $service);
             fclose($handler);
-            $this->info('Schedule service created successfully.');
+            $this->info('Scheduler service created successfully.');
         } catch (Exception $exception) {
             $this->error($exception->getMessage());
         }
@@ -36,7 +36,7 @@ class CreateScheduleService extends Command
 
     private function generateServiceCode()
     {
-        $serviceStub = file_get_contents(__DIR__ . '\..\..\Stubs\ScheduleService.stub');
+        $serviceStub = file_get_contents(__DIR__ . '\..\..\Stubs\SchedulerService.stub');
         $serviceStub = str_replace('$delay', config('auto-installer.services_startup_delay'), $serviceStub);
         $serviceStub = str_replace('$phpPath', PHP_BINARY, $serviceStub);
         $serviceStub = str_replace('$artisanPath', base_path('artisan'), $serviceStub);

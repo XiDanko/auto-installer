@@ -14,7 +14,7 @@ return [
         ['name' => 'migrate:fresh',                 'args' => ['--seed' => true]],
         ['name' => 'storage:link',                  'args' => []],
         ['name' => 'app:set-as-default-site',       'args' => []],
-        ['name' => 'app:create-schedule-service',   'args' => []],
+        ['name' => 'app:create-scheduler-service',   'args' => []],
         ['name' => 'app:create-websockets-service', 'args' => []],
         ['name' => 'app:create-roadrunner-service', 'args' => []],
         ['name' => 'optimize',                      'args' => []],

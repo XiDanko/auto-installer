@@ -5,7 +5,7 @@ namespace XiDanko\AutoInstaller;
 use Illuminate\Support\ServiceProvider;
 use XiDanko\AutoInstaller\Console\Commands\CreateDatabase;
 use XiDanko\AutoInstaller\Console\Commands\CreateRoadrunnerService;
-use XiDanko\AutoInstaller\Console\Commands\CreateScheduleService;
+use XiDanko\AutoInstaller\Console\Commands\CreateSchedulerService;
 use XiDanko\AutoInstaller\Console\Commands\CreateWebsocketsService;
 use XiDanko\AutoInstaller\Console\Commands\InstallApplication;
 use XiDanko\AutoInstaller\Console\Commands\RestartHost;
@@ -26,7 +26,7 @@ class AutoInstallerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CreateDatabase::class,
-                CreateScheduleService::class,
+                CreateSchedulerService::class,
                 CreateRoadrunnerService::class,
                 CreateWebsocketsService::class,
                 InstallApplication::class,
