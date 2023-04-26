@@ -1,0 +1,5 @@
+WScript.Sleep $delay
+Set oShell = CreateObject ("WScript.Shell")
+Dim phpPath : phpPath = "$phpPath"
+Dim artisanPath : artisanPath = "$artisanPath"
+oShell.run(phpPath & " -f " & artisanPath & " queue:work"), 0, True
