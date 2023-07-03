@@ -2,4 +2,4 @@ WScript.Sleep $delay
 Set oShell = CreateObject ("WScript.Shell")
 Dim phpPath : phpPath = "$phpPath"
 Dim artisanPath : artisanPath = "$artisanPath"
-oShell.run(phpPath & " -f " & artisanPath & " websockets:serve --disable-statistics -q"), 0, True
+oShell.run(phpPath & " -f " & artisanPath & " websockets:serve -q"), 0, True
