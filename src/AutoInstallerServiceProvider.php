@@ -7,7 +7,6 @@ use XiDanko\AutoInstaller\Console\Commands\CreateDatabase;
 use XiDanko\AutoInstaller\Console\Commands\CreateOctaneService;
 use XiDanko\AutoInstaller\Console\Commands\CreateQueueService;
 use XiDanko\AutoInstaller\Console\Commands\CreateSchedulerService;
-use XiDanko\AutoInstaller\Console\Commands\CreateWebsocketsService;
 use XiDanko\AutoInstaller\Console\Commands\InstallApplication;
 use XiDanko\AutoInstaller\Console\Commands\RestartHost;
 use XiDanko\AutoInstaller\Console\Commands\SetAsDefaultSite;
@@ -31,7 +30,6 @@ class AutoInstallerServiceProvider extends ServiceProvider
                 CreateSchedulerService::class,
                 CreateQueueService::class,
                 CreateOctaneService::class,
-                CreateWebsocketsService::class,
                 InstallApplication::class,
                 RestartHost::class,
                 SetAsDefaultSite::class,
