@@ -44,7 +44,7 @@ class StartOctane extends Command
 
     protected function getHost(): string
     {
-        return $this->option('host') ?? config('octane.host') ?? $_ENV['OCTANE_HOST'] ?? '127.0.0.1';
+        return $this->option('host') ?? config('octane.host') ?? $_ENV['OCTANE_HOST'] ?? '0.0.0.0';
     }
 
     protected function getPort(): string
