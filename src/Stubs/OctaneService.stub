@@ -1,5 +1,0 @@
-WScript.Sleep $delay
-Set oShell = CreateObject ("WScript.Shell")
-Dim phpPath : phpPath = "$phpPath"
-Dim artisanPath : artisanPath = "$artisanPath"
-oShell.run(phpPath & " -f " & artisanPath & " app:start-octane --host 0.0.0.0 --port 9090 --workers auto --max-requests 500 -q"), 0, True

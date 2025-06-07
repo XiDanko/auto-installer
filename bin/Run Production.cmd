@@ -1,6 +1,7 @@
 @ECHO OFF
 cd..
 call php artisan optimize:clear
+call php artisan opcache:clear
 echo Optimizing composer autoloader
 call composer update --no-dev --optimize-autoloader --no-interaction
 
